@@ -35,22 +35,25 @@ def get_all_orders(url):
         orders = []
         for row in query_results:
 
+            metal = {
+                "metal_name": row["metal"],
+                "metal_price": row["metal_price"],
+            }
+            style = {
+                "style_name": row["style"],
+                "style_price": row["style_price"],
+            }
+            size = {
+                "size_name": row["carete"],
+                "size_price": row["size_price"],
+            }
             order = {
                 "metal_id": row["metal_id"],
                 "style_id": row["style_id"],
                 "size_id": row["size_id"],
-                "metal": {
-                    "metal_name": row["metal"],
-                    "metal_price": row["metal_price"],
-                },
-                "style": {
-                    "style_name": row["style"],
-                    "style_price": row["style_price"],
-                },
-                "size": {
-                    "size_name": row["carete"],
-                    "size_price": row["size_price"],
-                },
+                "metal": metal,
+                "style": style,
+                "size": size,
             }
 
             orders.append(order)
